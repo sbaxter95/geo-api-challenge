@@ -6,7 +6,7 @@ describe APIApp do
     @api = APIApp.new
   end
 
-  it "should allow accessing the home page" do
+  it "test test" do
     expect(1 + 1).to eq(2)
   end
 
