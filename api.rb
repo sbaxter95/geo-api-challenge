@@ -22,7 +22,7 @@ class APIApp < Sinatra::Base
     name = params['device']
     doc = Nokogiri::XML(File.read("mini-schema.xml"))
     doc.at("name:contains('#{name}')").parent.to_xml
-    notes = doc.xpath('//notes')
+    doc.at("notes")
   end
 
 end
