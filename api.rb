@@ -19,6 +19,10 @@ class APIApp < Sinatra::Base
   #Display notes for single device
   get '/devices/:device' do
     content_type 'text/xml'
+    name = params['device']
+    doc = Nokogiri::XML(File.read("mini-schema.xml"))
+    doc.at("name:contains('#{name}')").parent.to_xml
+    notes = doc.xpath('//notes')
   end
 
 end
