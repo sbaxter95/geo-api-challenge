@@ -12,6 +12,8 @@ class APIApp < Sinatra::Base
   #Display all devices
   get '/devices' do
     content_type 'text/xml'
+    doc = File.read("mini-schema.xml")
+    return doc
   end
 
   #Display notes for single device
