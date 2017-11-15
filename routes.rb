@@ -1,12 +1,13 @@
 require_relative 'spec/spec_helper'
 require_relative 'all_devices.rb'
 require_relative 'find_device.rb'
+require_relative 'homepage.rb'
 require 'sinatra/base'
 require 'nokogiri'
 require 'active_support'
 require 'active_support/core_ext'
 
-class APIApp < Sinatra::Base
+class Routes < Sinatra::Base
 
   before do
 		content_type 'application/json'
@@ -14,8 +15,7 @@ class APIApp < Sinatra::Base
 
   #Display homepage to the api
   get '/' do
-    content_type 'application/json'
-    'Welcome to the Devices API'
+    Homepage.new.show_homepage_content
   end
 
   #Display all devices

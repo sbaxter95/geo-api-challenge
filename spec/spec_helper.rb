@@ -1,11 +1,11 @@
 require 'rack/test'
 require 'rspec'
 
-require File.expand_path '../../api.rb', __FILE__
+require File.expand_path '../../routes.rb', __FILE__
 
 module RSpecMixin
   include Rack::Test::Methods
-  def app() APIApp end
+  def app() Routes end
 end
 
 RSpec.configure do |config|
