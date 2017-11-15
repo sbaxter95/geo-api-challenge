@@ -1,4 +1,4 @@
-require_relative 'spec/spec_helper'
+require_relative '../spec/spec_helper'
 require_relative 'all_devices.rb'
 require_relative 'find_device.rb'
 require_relative 'homepage.rb'

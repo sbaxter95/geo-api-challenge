@@ -1,7 +1,7 @@
 require File.expand_path '../../spec_helper.rb', __FILE__
-require_relative '../../all_devices.rb'
-require_relative '../../find_device.rb'
-require_relative '../../homepage.rb'
+require_relative '../../lib/all_devices.rb'
+require_relative '../../lib/find_device.rb'
+require_relative '../../lib/homepage.rb'
 
 describe Routes do
 
