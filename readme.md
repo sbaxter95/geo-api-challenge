@@ -4,15 +4,16 @@ A challenge for GEO to build and test an api, based on a provided XML file. The 
 
 ## Technology and Tools used
 
-* Ruby
-* Sinatra MVC microframework
-* rspec testing framework
-* json gem
-* nokogiri gem
-* active_support gem
-* rack - allows app to be launched
-* git and github for version control
-* bundle gem
+* Ruby **2.4.1**
+* Sinatra MVC microframework **2.0.0**
+* rspec testing framework **3.7.0**
+* json gem **2.1.0**
+* nokogiri gem **1.8.1**
+* active_support gem **5.0.0**
+* rack - allows app to be launched **2.0.3**
+* rack-test - allows rack app to be tested **0.7.0**
+* git and github for version control **2.15.0**
+* bundle gem **0.01**
 
 ## Installing
 
