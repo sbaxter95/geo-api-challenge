@@ -17,7 +17,7 @@ class FindDevice
 			if device['name'] == name
 				output = device['notes'].to_s
         return output
-			end
+      end
 		end
   end
 

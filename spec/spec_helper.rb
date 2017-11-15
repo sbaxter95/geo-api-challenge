@@ -1,6 +1,6 @@
 require 'rack/test'
 require 'rspec'
-require_relative '../lib/routes.rb'
+require_relative '../routes.rb'
 
 # require File.expand_path './lib/routes.rb', __FILE__
 
