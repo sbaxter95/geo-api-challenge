@@ -25,18 +25,7 @@ class APIApp < Sinatra::Base
 
   #Display notes for single device
   get '/devices/:device' do
-    content_type 'application/json'
-    @doc = Nokogiri::XML(File.open('mini-schema.xml'))
-		parsed = @doc.to_s
-		json = Hash.from_xml(parsed)
-		@name_array = json['document']['devices']['device']
-    name = params['device']
-    @name_array.each do |device|
-			if device['name'] == name
-				output = device['notes'].to_s
-        return output
-			end
-		end
+    FindDevice.new('mini-schema.xml').find_device(params[:device])
   end
 
 end
