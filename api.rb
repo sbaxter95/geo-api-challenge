@@ -1,10 +1,16 @@
 require_relative 'spec/spec_helper'
+require_relative 'all_devices.rb'
+require_relative 'find_device.rb'
 require 'sinatra/base'
 require 'nokogiri'
 require 'active_support'
 require 'active_support/core_ext'
 
 class APIApp < Sinatra::Base
+
+  before do
+		content_type 'application/json'
+	end
 
   #Display homepage to the api
   get '/' do
@@ -14,12 +20,7 @@ class APIApp < Sinatra::Base
 
   #Display all devices
   get '/devices' do
-    content_type 'application/json'
-    @doc = Nokogiri::XML(File.open('mini-schema.xml'))
-		parsed = @doc.to_s
-		json = Hash.from_xml(parsed)
-		@name_array = json['document']['devices']['device']
-    return @name_array.to_json
+    AllDevices.new('mini-schema.xml').all_devices
   end
 
   #Display notes for single device

@@ -7,7 +7,8 @@ describe APIApp do
   end
 
   it "test test" do
-    expect(1 + 1).to eq(2)
+    get '/'
+      expect(last_response).to be_ok
   end
 
 end
