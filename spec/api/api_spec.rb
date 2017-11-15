@@ -80,4 +80,28 @@ describe Routes do
 
   end
 
+  context 'searching devices page' do
+
+    it 'should be able to show the notes of the device' do
+      get '/devices/smartplug_old_1'
+        expect(last_response).to be_ok
+    end
+
+    it 'should expect the notes to exist when searching for the smartplug_old_1' do
+      get '/devices/smartplug_old_1'
+        expect(@find.find_device('smartplug_old_1')).not_to be_nil
+    end
+
+    it 'should expect the notes to be a string when searching for the smartplug_old_1' do
+      get '/devices/smartplug_old_1'
+        expect(@find.find_device('smartplug_old_1').class).to eq(String)
+    end
+
+    it 'should expect the notes to be the correct string when searching for the smartplug_old_1' do
+      get '/devices/smartplug_old_1'
+        expect(@find.find_device('smartplug_old_1')).to eq('Legacy Legato smartplug 1')
+    end
+
+  end
+
 end
