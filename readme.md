@@ -21,12 +21,51 @@ A challenge for GEO to build and test an api, based on a provided XML file. The 
 * Navigate to the directory in the command line
 * Run the ```bundle``` command to install all dependencies - if the bundle gem is not installed, the run ```bundle install```
 * Run the api using the ```rackup config.ru```
+* Go to http://localhost:9292/ once the server is running to access the homepage
 * To run the tests, run the ```rspec``` command
 
 ## Modifying
 
 * The config.ru file can be modified to change the environment of the application
-* The spec_helper file can be use dto modify and configure rspec and its output in the terminal
+* The spec_helper file can be used to modify and configure rspec and its output in the terminal
 * New services can be added to the API by adding another class to the lib directory
 * Methods can be added to the new class, which can then be called from the main routes class
 * Add the new classes to both the test spec files and routes
+
+## Services
+
+### All devices
+
+**/devices**
+
+Returns all of the devices from the document in a string
+
+### Find device
+
+**/devices/:device**
+
+Returns the notes of a device based on the name used as a search parameter
+
+### Homepage
+
+**localhost:9292**
+
+Root page of the api with instructions
+
+### Random device
+
+**/devices/random**
+
+Returns a random device as a string
+
+### Search by value
+
+**/devices/value/:value**
+
+Returns a device based on the value entered as a parameter
+
+### Single Device
+
+**devices/single/:name**
+
+Returns a device as a string based on the name entered as a parameter
