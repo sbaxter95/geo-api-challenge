@@ -2,6 +2,7 @@ require_relative 'spec/spec_helper'
 require_relative 'lib/all_devices.rb'
 require_relative 'lib/find_device.rb'
 require_relative 'lib/homepage.rb'
+require_relative 'lib/search_by_value.rb'
 require 'sinatra/base'
 require 'nokogiri'
 require 'active_support'
@@ -21,6 +22,10 @@ class Routes < Sinatra::Base
   #Display all devices
   get '/devices' do
     AllDevices.new('mini-schema.xml').all_devices
+  end
+
+  get '/devices/value/:value' do
+    SearchValue.new('mini-schema.xml').find_by_value(params[:value])
   end
 
   #Display notes for single device
