@@ -16,7 +16,6 @@ class SearchValue
     @name_array.each do |device|
 			if device['value'] == value
 				output = device.to_s
-        puts output
         return output
       end
 		end

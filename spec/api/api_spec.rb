@@ -9,6 +9,9 @@ describe Routes do
     @home = Homepage.new
 		@devices = AllDevices.new('mini-schema.xml')
     @find = FindDevice.new('mini-schema.xml')
+    @random = RandomDevice.new('mini-schema.xml')
+    @value = SearchValue.new('mini-schema.xml')
+    @single = SingleDevice.new('mini-schema.xml')
 	end
 
   context 'homepage' do
@@ -100,6 +103,63 @@ describe Routes do
     it 'should expect the notes to be the correct string when searching for the smartplug_old_1' do
       get '/devices/smartplug_old_1'
         expect(@find.find_device('smartplug_old_1')).to eq('Legacy Legato smartplug 1')
+    end
+
+  end
+
+  context 'random device service' do
+
+    it 'should return a device' do
+      get '/devices/random'
+        expect(last_response).to be_ok
+    end
+
+    it 'should return a string' do
+      get '/devices/random'
+        expect(@random.random_device.class).to eq(String)
+    end
+
+  end
+
+  context 'searching by value' do
+
+    it 'should return a device' do
+      get '/devices/value/80'
+      expect(last_response).to be_ok
+    end
+
+    it 'should return an array' do
+      get '/devices/value/80'
+        expect(@value.find_by_value(80).class).to eq(Array)
+    end
+
+  end
+
+  context 'searching for single device' do
+
+    it 'should return a device' do
+      get '/devices/single/ct'
+        expect(last_response).to be_ok
+    end
+
+    it 'should return a string' do
+      get '/devices/single/ct'
+        expect(@single.single_device('ct').class).to eq(String)
+    end
+
+    it 'should include the word name' do
+      get '/devices/single/ct'
+        expect(@single.single_device('ct')).to include('name')
+    end
+
+    it 'should include the word value' do
+      get '/devices/single/ct'
+        expect(@single.single_device('ct')).to include('value')
+    end
+
+    it 'should include the word notes' do
+      get '/devices/single/ct'
+        expect(@single.single_device('ct')).to include('notes')
     end
 
   end
