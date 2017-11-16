@@ -3,6 +3,8 @@ require_relative 'lib/all_devices.rb'
 require_relative 'lib/find_device.rb'
 require_relative 'lib/homepage.rb'
 require_relative 'lib/search_by_value.rb'
+require_relative 'lib/random_device.rb'
+require_relative 'lib/single_device.rb'
 require 'sinatra/base'
 require 'nokogiri'
 require 'active_support'
@@ -24,8 +26,16 @@ class Routes < Sinatra::Base
     AllDevices.new('mini-schema.xml').all_devices
   end
 
+  get '/devices/random' do
+    RandomDevice.new('mini-schema.xml').random_device
+  end
+
   get '/devices/value/:value' do
     SearchValue.new('mini-schema.xml').find_by_value(params[:value])
+  end
+
+  get '/devices/single/:name' do
+    SingleDevice.new('mini-schema.xml').single_device(params[:name])
   end
 
   #Display notes for single device
